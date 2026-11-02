@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% block title %}About Us{% endblock %}
+{% block content %}
+
+<section class="page-hero">
+    <canvas id="particleCanvas"></canvas>
+    <div class="container page-hero-content">
+        <span class="section-tag">Who We Are</span>
+        <h1>About <span class="gradient-text">Shriram Technologies</span></h1>
+        <p>A registered partnership firm delivering innovation, automation and engineering excellence — in India and globally.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="about-intro">
+            <div class="about-text reveal">
+                <h2>Our Story & Mission</h2>
+                <p>Shriram Technologies is a registered partnership firm established with a mission to provide comprehensive technology, automation and engineering solutions to businesses across India and abroad. We bring together deep domain expertise in industrial automation, robotics, software, AI and manpower solutions under a single integrated firm.</p>
+                <p>Our business spans the full lifecycle of technology — from research, design and development to supply, installation, commissioning and ongoing maintenance. We work with clients across manufacturing, healthcare, agriculture, logistics, banking, energy and virtually every other sector that benefits from automation and intelligent systems.</p>
+                <p>We believe technology should work for people — reducing cost, improving quality, increasing safety and unlocking new capabilities. That is the core philosophy driving every project we take on.</p>
+                <a href="{{ url_for('contact') }}" class="btn-primary">Work With Us →</a>
+            </div>
+            <div class="about-values reveal">
+                <div class="value-card">
+                    <div class="vc-icon">🎯</div>
+                    <h4>Mission</h4>
+                    <p>To deliver cutting-edge automation, robotics and technology solutions that transform how businesses operate in India and beyond.</p>
+                </div>
+                <div class="value-card">
+                    <div class="vc-icon">🔭</div>
+                    <h4>Vision</h4>
+                    <p>To be India's most trusted full-spectrum automation and technology partner — from embedded hardware to Generative AI.</p>
+                </div>
+                <div class="value-card">
+                    <div class="vc-icon">💡</div>
+                    <h4>Innovation</h4>
+                    <p>We continuously invest in R&D, IP creation and partnerships to stay at the frontier of technology.</p>
+                </div>
+                <div class="value-card">
+                    <div class="vc-icon">🌐</div>
+                    <h4>Global Reach</h4>
+                    <p>Operating in India and abroad with manpower solutions, project delivery and collaborations worldwide.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section bg-dark-section">
+    <div class="container">
+        <div class="section-header light">
+            <span class="section-tag">Our Business Scope</span>
+            <h2>Registered Business Activities</h2>
+            <p>As registered under our partnership deed, Shriram Technologies is authorised to carry on the following activities in India and abroad.</p>
+        </div>
+        <div class="scope-grid">
+            <div class="scope-item reveal"><span>⚙️</span> Automation Solutions — All Sectors</div>
+            <div class="scope-item reveal"><span>🏭</span> Industrial Automation (SCADA, PLC, DCS, HMI, IIoT)</div>
+            <div class="scope-item reveal"><span>💻</span> Software & SaaS Application Development</div>
+            <div class="scope-item reveal"><span>🔌</span> Hardware, Embedded & IoT Systems</div>
+            <div class="scope-item reveal"><span>🔄</span> Robotic Process Automation (RPA)</div>
+            <div class="scope-item reveal"><span>🧠</span> AI, ML, Data Science & Analytics</div>
+            <div class="scope-item reveal"><span>🧬</span> Generative & Agentic AI Systems</div>
+            <div class="scope-item reveal"><span>🤖</span> Robotics — All Types</div>
+            <div class="scope-item reveal"><span>📋</span> Consulting & Turnkey Project Execution</div>
+            <div class="scope-item reveal"><span>👥</span> Manpower & Recruitment Solutions</div>
+            <div class="scope-item reveal"><span>🔬</span> R&D & Intellectual Property</div>
+            <div class="scope-item reveal"><span>📦</span> Trading, Import & Export</div>
+            <div class="scope-item reveal"><span>🤝</span> Collaborations & Joint Ventures</div>
+            <div class="scope-item reveal"><span>🛠️</span> Incidental & Allied Activities</div>
+        </div>
+    </div>
+</section>
+
+<section class="section process-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Our Approach</span>
+            <h2>How We <span class="gradient-text">Work</span></h2>
+        </div>
+        <div class="process-track">
+            <div class="process-line"></div>
+            <div class="process-step-card reveal">
+                <div class="ps-num">01</div>
+                <div class="ps-icon">🔍</div>
+                <h4>Consult & Assess</h4>
+                <p>Understand your challenge and conduct thorough feasibility studies.</p>
+            </div>
+            <div class="process-step-card reveal">
+                <div class="ps-num">02</div>
+                <div class="ps-icon">🧩</div>
+                <h4>Design & Engineer</h4>
+                <p>Architect the right solution — hardware, software, automation or hybrid.</p>
+            </div>
+            <div class="process-step-card reveal">
+                <div class="ps-num">03</div>
+                <div class="ps-icon">🔨</div>
+                <h4>Build & Validate</h4>
+                <p>Develop, assemble, program and rigorously test the complete solution.</p>
+            </div>
+            <div class="process-step-card reveal">
+                <div class="ps-num">04</div>
+                <div class="ps-icon">🚀</div>
+                <h4>Deploy & Support</h4>
+                <p>Install, commission and provide ongoing AMC and technical support.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-box reveal">
+            <div class="cta-glow"></div>
+            <div class="cta-content">
+                <span class="section-tag">Collaborate</span>
+                <h2>Partner <span class="gradient-text">With Us</span></h2>
+                <p>Joint ventures, subcontracts and technical collaborations welcome.</p>
+                <div class="cta-actions">
+                    <a href="{{ url_for('contact') }}" class="btn-primary btn-lg">Get in Touch</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
