@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+{% block title %}Services{% endblock %}
+{% block content %}
+
+<section class="page-hero">
+    <canvas id="particleCanvas"></canvas>
+    <div class="container page-hero-content">
+        <span class="section-tag">What We Offer</span>
+        <h1>Our <span class="gradient-text">Services</span></h1>
+        <p>A complete suite of technology, automation and engineering services — from concept to commissioning and beyond.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="services-list">
+
+            <div class="service-row reveal">
+                <div class="sr-num">01</div>
+                <div class="sr-icon-wrap"><i class="fa-solid fa-gears sr-fa-icon"></i></div>
+                <div class="sr-content">
+                    <h3>Automation Solutions</h3>
+                    <p>We design, develop, engineer, supply, install, commission, integrate, operate and maintain automation solutions across all domains — industrial, commercial, infrastructure, healthcare, agriculture, retail, banking, logistics, energy and beyond.</p>
+                    <div class="sr-tags"><span>Design</span><span>Deploy</span><span>Maintain</span><span>All Sectors</span></div>
+                </div>
+            </div>
+
+            <div class="service-row reveal">
+                <div class="sr-num">02</div>
+                <div class="sr-icon-wrap"><i class="fa-solid fa-industry sr-fa-icon"></i></div>
+                <div class="sr-content">
+                    <h3>Industrial Automation</h3>
+                    <p>End-to-end industrial automation and control systems including SCADA, PLC, DCS, HMI, IIoT, instrumentation, control panels, drives, motion control and all related hardware and software.</p>
+                    <div class="sr-tags"><span>SCADA</span><span>PLC</span><span>DCS</span><span>HMI</span><span>IIoT</span></div>
+                </div>
+            </div>
+
+            <div class="service-row reveal">
+                <div class="sr-num">03</div>
+                <div class="sr-icon-wrap"><i class="fa-solid fa-code sr-fa-icon"></i></div>
+                <div class="sr-content">
+                    <h3>Software & Application Development</h3>
+                    <p>Develop, customise, test, deploy, license, maintain and support software products, enterprise applications, web, mobile and desktop applications, cloud-based solutions, APIs, integrations and SaaS platforms.</p>
+                    <div class="sr-tags"><span>Web</span><span>Mobile</span><span>Cloud</span><span>SaaS</span><span>APIs</span></div>
+                </div>
+            </div>
+
+            <div class="service-row reveal">
+                <div class="sr-num">04</div>
+                <div class="sr-icon-wrap"><i class="fa-solid fa-microchip sr-fa-icon"></i></div>
+                <div class="sr-content">
+                    <h3>Hardware & Embedded Systems</h3>
+                    <p>Design, develop, prototype and manufacture electronic and electrical computing hardware, embedded systems, firmware, microcontroller/microprocessor-based products, sensors, IoT devices and allied products.</p>
+                    <div class="sr-tags"><span>Embedded</span><span>IoT</span><span>Firmware</span><span>Sensors</span></div>
+                </div>
+            </div>
+
+            <div class="service-row reveal">
+                <div class="sr-num">05</div>
+                <div class="sr-icon-wrap"><i class="fa-solid fa-arrows-spin sr-fa-icon"></i></div>
+                <div class="sr-content">
+                    <h3>Robotic Process Automation (RPA)</h3>
+                    <p>Design and implement RPA and intelligent process automation solutions for business process improvement, reducing manual effort and driving operational efficiency across your organisation.</p>
+                    <div class="sr-tags"><span>RPA</span><span>Intelligent Automation</span><span>Workflow</span></div>
+                </div>
+            </div>
+
+            <div class="service-row reveal">
+                <div class="sr-num">06</div>
+                <div class="sr-icon-wrap"><i class="fa-solid fa-brain sr-fa-icon"></i></div>
+                <div class="sr-content">
+                    <h3>AI, Machine Learning & Data Science</h3>
+                    <p>Solutions in artificial intelligence, machine learning, deep learning, computer vision, natural language processing, data science, data engineering, predictive modelling, analytics and business intelligence.</p>
+                    <div class="sr-tags"><span>AI/ML</span><span>Computer Vision</span><span>NLP</span><span>Analytics</span></div>
+                </div>
+            </div>
+
+            <div class="service-row reveal">
+                <div class="sr-num">07</div>
+                <div class="sr-icon-wrap"><i class="fa-solid fa-wand-magic-sparkles sr-fa-icon"></i></div>
+                <div class="sr-content">
+                    <h3>Generative & Agentic AI</h3>
+                    <p>Design, build and deploy Generative AI applications, Agentic AI systems, Retrieval-Augmented Generation (RAG) systems, large language model-based solutions, AI assistants, and related model fine-tuning, integration and consulting services.</p>
+                    <div class="sr-tags"><span>GenAI</span><span>RAG</span><span>LLM</span><span>AI Agents</span></div>
+                </div>
+            </div>
+
+            <div class="service-row reveal">
+                <div class="sr-num">08</div>
+                <div class="sr-icon-wrap"><i class="fa-solid fa-robot sr-fa-icon"></i></div>
+                <div class="sr-content">
+                    <h3>Robotics</h3>
+                    <p>Research, design, develop, build, assemble, program, deploy and maintain robots and robotic systems of all types — industrial, service, collaborative, mobile, autonomous and humanoid — along with their components, software and control systems.</p>
+                    <div class="sr-tags"><span>Industrial</span><span>Collaborative</span><span>Autonomous</span><span>Humanoid</span></div>
+                </div>
+            </div>
+
+            <div class="service-row reveal">
+                <div class="sr-num">09</div>
+                <div class="sr-icon-wrap"><i class="fa-solid fa-clipboard-check sr-fa-icon"></i></div>
+                <div class="sr-content">
+                    <h3>Consulting & Turnkey Projects</h3>
+                    <p>Consulting, feasibility studies, system design, project management, turnkey execution, testing, validation, training, annual maintenance contracts (AMC) and full technical support services.</p>
+                    <div class="sr-tags"><span>Consulting</span><span>Turnkey</span><span>AMC</span><span>Training</span></div>
+                </div>
+            </div>
+
+            <div class="service-row reveal">
+                <div class="sr-num">10</div>
+                <div class="sr-icon-wrap"><i class="fa-solid fa-users-gear sr-fa-icon"></i></div>
+                <div class="sr-content">
+                    <h3>Manpower Solutions</h3>
+                    <p>Manpower and human resource solutions including recruitment, staffing, contract and deputation of technical professionals, talent sourcing, outsourcing of technical teams, and training and skill development services in India and abroad.</p>
+                    <div class="sr-tags"><span>Recruitment</span><span>Staffing</span><span>Training</span><span>Global</span></div>
+                </div>
+            </div>
+
+            <div class="service-row reveal">
+                <div class="sr-num">11</div>
+                <div class="sr-icon-wrap"><i class="fa-solid fa-flask sr-fa-icon"></i></div>
+                <div class="sr-content">
+                    <h3>Research & Intellectual Property</h3>
+                    <p>Research and development, and creation, acquisition, ownership, licensing and commercialisation of intellectual property, software, patents, designs and know-how relating to the firm's business.</p>
+                    <div class="sr-tags"><span>R&D</span><span>Patents</span><span>IP Licensing</span></div>
+                </div>
+            </div>
+
+            <div class="service-row reveal">
+                <div class="sr-num">12</div>
+                <div class="sr-icon-wrap"><i class="fa-solid fa-boxes-stacked sr-fa-icon"></i></div>
+                <div class="sr-content">
+                    <h3>Trading, Import & Export</h3>
+                    <p>Buy, sell, import, export and distribute hardware, software, equipment, components and materials. Acting as agent or dealer for technology products related to our business domains.</p>
+                    <div class="sr-tags"><span>Import</span><span>Export</span><span>Distribution</span><span>Agency</span></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-box reveal">
+            <div class="cta-glow"></div>
+            <div class="cta-content">
+                <span class="section-tag">Let's Build Together</span>
+                <h2>Need a <span class="gradient-text">Custom Solution?</span></h2>
+                <p>Every challenge is unique. Let's engineer the right answer together.</p>
+                <div class="cta-actions">
+                    <a href="{{ url_for('contact') }}" class="btn-primary btn-lg">Contact Our Experts</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
