@@ -1,0 +1,313 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+    <canvas id="particleCanvas"></canvas>
+    <div class="hero-content">
+        <div class="hero-badge">
+            <span class="badge-dot"></span>
+            Automation &amp; Robotics Experts
+        </div>
+        <h1 class="hero-title">
+            Engineering the
+            <span class="gradient-text typed-text" id="typedText"></span>
+        </h1>
+        <p class="hero-desc">
+            Shriram Technologies delivers cutting-edge automation, robotics, AI and engineering solutions
+            that transform industries — from factory floors to intelligent cloud platforms.
+        </p>
+        <div class="hero-actions">
+            <a href="{{ url_for('services') }}" class="btn-primary">
+                <i class="fa-solid fa-bolt"></i> Explore Services
+            </a>
+            <a href="{{ url_for('contact') }}" class="btn-ghost">
+                <i class="fa-solid fa-phone"></i> Talk to Us
+            </a>
+        </div>
+        <div class="hero-stats">
+            <div class="stat-item">
+                <span class="stat-num" data-target="12">0</span><span class="stat-suffix">+</span>
+                <span class="stat-label">Industries Served</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <span class="stat-num" data-target="50">0</span><span class="stat-suffix">+</span>
+                <span class="stat-label">Projects Delivered</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <span class="stat-num" data-target="360">0</span><span class="stat-suffix">°</span>
+                <span class="stat-label">Tech Coverage</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <span class="stat-num" data-target="100">0</span><span class="stat-suffix">%</span>
+                <span class="stat-label">Client Focused</span>
+            </div>
+        </div>
+    </div>
+    <div class="hero-visual">
+        <div class="hero-globe">
+            <div class="globe-ring r1"></div>
+            <div class="globe-ring r2"></div>
+            <div class="globe-ring r3"></div>
+            <div class="globe-core">
+                <img src="{{ url_for('static', filename='images/logo-dark.jpg') }}" alt="Shriram Technologies" class="globe-logo">
+            </div>
+            <div class="orbit-dot od1"></div>
+            <div class="orbit-dot od2"></div>
+            <div class="orbit-dot od3"></div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== MARQUEE STRIP ===== -->
+<div class="marquee-strip">
+    <div class="marquee-track">
+        <span><i class="fa-solid fa-gears"></i> Automation</span>
+        <span><i class="fa-solid fa-robot"></i> Robotics</span>
+        <span><i class="fa-solid fa-brain"></i> Artificial Intelligence</span>
+        <span><i class="fa-solid fa-industry"></i> Industrial SCADA/PLC</span>
+        <span><i class="fa-solid fa-code"></i> Software Development</span>
+        <span><i class="fa-solid fa-microchip"></i> Embedded Systems</span>
+        <span><i class="fa-solid fa-wand-magic-sparkles"></i> Generative AI</span>
+        <span><i class="fa-solid fa-users"></i> Manpower Solutions</span>
+        <span><i class="fa-solid fa-flask"></i> R&amp;D &amp; IP</span>
+        <span><i class="fa-solid fa-box"></i> Import &amp; Export</span>
+        <span><i class="fa-solid fa-handshake"></i> Turnkey Projects</span>
+        <span><i class="fa-solid fa-chart-line"></i> Data Science</span>
+        <!-- repeat -->
+        <span><i class="fa-solid fa-gears"></i> Automation</span>
+        <span><i class="fa-solid fa-robot"></i> Robotics</span>
+        <span><i class="fa-solid fa-brain"></i> Artificial Intelligence</span>
+        <span><i class="fa-solid fa-industry"></i> Industrial SCADA/PLC</span>
+        <span><i class="fa-solid fa-code"></i> Software Development</span>
+        <span><i class="fa-solid fa-microchip"></i> Embedded Systems</span>
+        <span><i class="fa-solid fa-wand-magic-sparkles"></i> Generative AI</span>
+        <span><i class="fa-solid fa-users"></i> Manpower Solutions</span>
+        <span><i class="fa-solid fa-flask"></i> R&amp;D &amp; IP</span>
+        <span><i class="fa-solid fa-box"></i> Import &amp; Export</span>
+        <span><i class="fa-solid fa-handshake"></i> Turnkey Projects</span>
+        <span><i class="fa-solid fa-chart-line"></i> Data Science</span>
+    </div>
+</div>
+
+<!-- ===== SERVICES ===== -->
+<section class="section" id="services">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-tag-wrap">
+                <span class="section-tag">What We Do</span>
+            </div>
+            <h2>Comprehensive <span class="gradient-text">Technology Solutions</span></h2>
+            <p>From factory floors to cloud platforms — we engineer solutions that transform how businesses operate.</p>
+        </div>
+        <div class="services-bento">
+            <div class="bento-card bento-large reveal">
+                <div class="bento-icon-wrap"><i class="fa-solid fa-gears bento-fa-icon"></i></div>
+                <h3>Automation Solutions</h3>
+                <p>Design, deploy and maintain automation across industrial, commercial, healthcare, agriculture, retail, banking, logistics and energy sectors.</p>
+                <a href="{{ url_for('services') }}" class="bento-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
+                <div class="bento-bg-shape"></div>
+            </div>
+            <div class="bento-card reveal">
+                <div class="bento-icon-wrap bento-icon-sm"><i class="fa-solid fa-robot bento-fa-icon"></i></div>
+                <h3>Robotics</h3>
+                <p>Industrial, collaborative, mobile, autonomous &amp; humanoid robots.</p>
+                <a href="{{ url_for('services') }}" class="bento-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="bento-card reveal">
+                <div class="bento-icon-wrap bento-icon-sm"><i class="fa-solid fa-brain bento-fa-icon"></i></div>
+                <h3>AI &amp; Machine Learning</h3>
+                <p>Deep learning, computer vision, NLP, predictive modelling &amp; analytics.</p>
+                <a href="{{ url_for('services') }}" class="bento-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="bento-card reveal">
+                <div class="bento-icon-wrap bento-icon-sm"><i class="fa-solid fa-wand-magic-sparkles bento-fa-icon"></i></div>
+                <h3>Generative &amp; Agentic AI</h3>
+                <p>RAG systems, LLM-based apps, AI assistants &amp; fine-tuning.</p>
+                <a href="{{ url_for('services') }}" class="bento-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="bento-card bento-wide reveal">
+                <div class="bento-icon-wrap"><i class="fa-solid fa-industry bento-fa-icon"></i></div>
+                <h3>Industrial Automation</h3>
+                <p>SCADA, PLC, DCS, HMI, IIoT, instrumentation, control panels, drives and motion control — complete industrial systems.</p>
+                <a href="{{ url_for('services') }}" class="bento-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
+                <div class="bento-bg-shape"></div>
+            </div>
+            <div class="bento-card reveal">
+                <div class="bento-icon-wrap bento-icon-sm"><i class="fa-solid fa-code bento-fa-icon"></i></div>
+                <h3>Software Development</h3>
+                <p>Enterprise apps, SaaS, cloud, APIs &amp; mobile.</p>
+                <a href="{{ url_for('services') }}" class="bento-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="bento-card reveal">
+                <div class="bento-icon-wrap bento-icon-sm"><i class="fa-solid fa-microchip bento-fa-icon"></i></div>
+                <h3>Hardware &amp; Embedded</h3>
+                <p>Microcontrollers, IoT, firmware &amp; embedded systems.</p>
+                <a href="{{ url_for('services') }}" class="bento-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="bento-card reveal">
+                <div class="bento-icon-wrap bento-icon-sm"><i class="fa-solid fa-clipboard-check bento-fa-icon"></i></div>
+                <h3>Turnkey Projects</h3>
+                <p>End-to-end execution, AMC &amp; technical support.</p>
+                <a href="{{ url_for('services') }}" class="bento-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </div>
+        <div class="center-action">
+            <a href="{{ url_for('services') }}" class="btn-primary">
+                View All 12 Services <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== WHY US ===== -->
+<section class="section why-section">
+    <div class="container">
+        <div class="why-layout">
+            <div class="why-left reveal">
+                <span class="section-tag">Why Choose Us</span>
+                <h2>Your End-to-End <span class="gradient-text">Technology Partner</span></h2>
+                <p>We are a full-spectrum technology firm — from concept and consulting to turnkey delivery and ongoing AMC support. We don't just build solutions; we engineer outcomes.</p>
+                <div class="why-points">
+                    <div class="why-point">
+                        <div class="why-icon-wrap"><i class="fa-solid fa-circle-check why-fa-icon"></i></div>
+                        <div>
+                            <strong>Turnkey Execution</strong>
+                            <p>Feasibility, design, build, testing, validation and training — all under one roof.</p>
+                        </div>
+                    </div>
+                    <div class="why-point">
+                        <div class="why-icon-wrap"><i class="fa-solid fa-earth-asia why-fa-icon"></i></div>
+                        <div>
+                            <strong>India &amp; Global Reach</strong>
+                            <p>Operating in India and abroad with manpower and project delivery worldwide.</p>
+                        </div>
+                    </div>
+                    <div class="why-point">
+                        <div class="why-icon-wrap"><i class="fa-solid fa-flask why-fa-icon"></i></div>
+                        <div>
+                            <strong>R&amp;D &amp; IP Creation</strong>
+                            <p>We invest in research, patents and proprietary know-how to stay ahead.</p>
+                        </div>
+                    </div>
+                    <div class="why-point">
+                        <div class="why-icon-wrap"><i class="fa-solid fa-handshake why-fa-icon"></i></div>
+                        <div>
+                            <strong>Strategic Collaborations</strong>
+                            <p>Joint ventures and technical partnerships with leading companies and institutions.</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="{{ url_for('about') }}" class="btn-primary">About Us <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="why-right reveal">
+                <div class="feature-cards">
+                    <div class="feature-card fc-blue">
+                        <i class="fa-solid fa-industry fc-icon"></i>
+                        <h4>Industrial SCADA &amp; PLC</h4>
+                        <p>Complete control system expertise</p>
+                    </div>
+                    <div class="feature-card fc-dark">
+                        <i class="fa-solid fa-wand-magic-sparkles fc-icon"></i>
+                        <h4>Generative &amp; Agentic AI</h4>
+                        <p>Next-gen intelligent systems</p>
+                    </div>
+                    <div class="feature-card fc-dark">
+                        <i class="fa-solid fa-bolt fc-icon"></i>
+                        <h4>RPA &amp; Process Automation</h4>
+                        <p>Intelligent workflow automation</p>
+                    </div>
+                    <div class="feature-card fc-blue">
+                        <i class="fa-solid fa-screwdriver-wrench fc-icon"></i>
+                        <h4>Turnkey Projects &amp; AMC</h4>
+                        <p>Start to finish delivery</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== INDUSTRIES ===== -->
+<section class="section industries-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Industries</span>
+            <h2>Sectors We <span class="gradient-text">Serve</span></h2>
+            <p>Our solutions span every major industry vertical.</p>
+        </div>
+        <div class="industries-grid">
+            <div class="industry-card reveal"><div class="ind-icon-wrap"><i class="fa-solid fa-industry ind-fa-icon"></i></div><span>Manufacturing</span></div>
+            <div class="industry-card reveal"><div class="ind-icon-wrap"><i class="fa-solid fa-hospital ind-fa-icon"></i></div><span>Healthcare</span></div>
+            <div class="industry-card reveal"><div class="ind-icon-wrap"><i class="fa-solid fa-wheat-awn ind-fa-icon"></i></div><span>Agriculture</span></div>
+            <div class="industry-card reveal"><div class="ind-icon-wrap"><i class="fa-solid fa-landmark ind-fa-icon"></i></div><span>Banking &amp; Finance</span></div>
+            <div class="industry-card reveal"><div class="ind-icon-wrap"><i class="fa-solid fa-truck ind-fa-icon"></i></div><span>Logistics</span></div>
+            <div class="industry-card reveal"><div class="ind-icon-wrap"><i class="fa-solid fa-bolt ind-fa-icon"></i></div><span>Energy</span></div>
+            <div class="industry-card reveal"><div class="ind-icon-wrap"><i class="fa-solid fa-helmet-safety ind-fa-icon"></i></div><span>Infrastructure</span></div>
+            <div class="industry-card reveal"><div class="ind-icon-wrap"><i class="fa-solid fa-bag-shopping ind-fa-icon"></i></div><span>Retail</span></div>
+            <div class="industry-card reveal"><div class="ind-icon-wrap"><i class="fa-solid fa-building ind-fa-icon"></i></div><span>Commercial</span></div>
+            <div class="industry-card reveal"><div class="ind-icon-wrap"><i class="fa-solid fa-cloud ind-fa-icon"></i></div><span>Cloud &amp; SaaS</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PROCESS ===== -->
+<section class="section process-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">How We Work</span>
+            <h2>Our <span class="gradient-text">Process</span></h2>
+        </div>
+        <div class="process-track">
+            <div class="process-line"></div>
+            <div class="process-step-card reveal">
+                <div class="ps-num">01</div>
+                <div class="ps-icon-wrap"><i class="fa-solid fa-magnifying-glass ps-fa-icon"></i></div>
+                <h4>Consult &amp; Assess</h4>
+                <p>We understand your business challenge and conduct thorough feasibility studies.</p>
+            </div>
+            <div class="process-step-card reveal">
+                <div class="ps-num">02</div>
+                <div class="ps-icon-wrap"><i class="fa-solid fa-pen-ruler ps-fa-icon"></i></div>
+                <h4>Design &amp; Engineer</h4>
+                <p>Architect the right solution — hardware, software, automation or hybrid.</p>
+            </div>
+            <div class="process-step-card reveal">
+                <div class="ps-num">03</div>
+                <div class="ps-icon-wrap"><i class="fa-solid fa-wrench ps-fa-icon"></i></div>
+                <h4>Build &amp; Validate</h4>
+                <p>Develop, assemble, program and rigorously test the complete solution.</p>
+            </div>
+            <div class="process-step-card reveal">
+                <div class="ps-num">04</div>
+                <div class="ps-icon-wrap"><i class="fa-solid fa-rocket ps-fa-icon"></i></div>
+                <h4>Deploy &amp; Support</h4>
+                <p>Install, commission and provide ongoing AMC and technical support.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-box reveal">
+            <div class="cta-glow"></div>
+            <div class="cta-content">
+                <span class="section-tag">Let's Collaborate</span>
+                <h2>Ready to Automate<br>&amp; <span class="gradient-text">Innovate?</span></h2>
+                <p>Let's discuss your project and engineer the right solution for your business — from concept to commissioning.</p>
+                <div class="cta-actions">
+                    <a href="{{ url_for('contact') }}" class="btn-primary btn-lg"><i class="fa-solid fa-paper-plane"></i> Get in Touch Today</a>
+                    <a href="{{ url_for('services') }}" class="btn-ghost">View Services <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
