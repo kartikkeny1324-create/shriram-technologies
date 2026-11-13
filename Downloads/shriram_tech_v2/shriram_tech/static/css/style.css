@@ -147,7 +147,7 @@ img { max-width: 100%; display: block; }
 
 /* Logo in navbar */
 .nav-logo { display: flex; align-items: center; }
-.logo-img { height: 48px; width: auto; object-fit: contain; transition: var(--tr); }
+.logo-img { height: 72px; width: auto; object-fit: contain; transition: var(--tr); }
 .logo-img--dark { display: block; }
 .logo-img--light { display: none; }
 
@@ -746,7 +746,7 @@ img { max-width: 100%; display: block; }
     .nav-link:hover, .nav-link.active { background: rgba(17,85,204,0.08); color: #0d47a1; }
     .hamburger { display: flex; }
     .btn-nav { padding: 8px 16px; font-size: 0.8rem; }
-    .logo-img { height: 38px; }
+    .logo-img { height: 56px; }
 
     /* Hero */
     .hero { padding: 100px 16px 52px; gap: 28px; }
