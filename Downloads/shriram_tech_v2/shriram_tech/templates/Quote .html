@@ -1,0 +1,170 @@
+<!-- ============================================================
+     GET A QUOTE MODAL
+     Paste this just before </body> in your base.html
+============================================================ -->
+
+<div class="modal-overlay" id="quoteModal">
+  <div class="modal-box" id="modalBox">
+
+    <!-- HEADER -->
+    <div class="modal-header">
+      <button class="modal-close" id="closeModal" aria-label="Close">✕</button>
+      <div class="modal-tag"><span class="modal-dot"></span> Free Consultation</div>
+      <h2>Get a <span class="gradient-text">Custom Quote</span></h2>
+      <p>Tell us about your project — we'll respond within 24 hours with a tailored proposal.</p>
+    </div>
+
+    <!-- BODY -->
+    <div class="modal-body">
+
+      <!-- Steps bar -->
+      <div class="steps-bar" id="stepsBar">
+        <div class="step-item">
+          <div class="step-num active" id="sn1">1</div>
+          <div class="step-label active" id="sl1">Your Details</div>
+        </div>
+        <div class="step-line" id="line1"></div>
+        <div class="step-item">
+          <div class="step-num" id="sn2">2</div>
+          <div class="step-label" id="sl2">Service Needed</div>
+        </div>
+        <div class="step-line" id="line2"></div>
+        <div class="step-item">
+          <div class="step-num" id="sn3">3</div>
+          <div class="step-label" id="sl3">Budget &amp; Timeline</div>
+        </div>
+      </div>
+
+      <!-- STEP 1: Details -->
+      <div class="form-step active" id="qstep1">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" id="q-name" placeholder="Your full name">
+          </div>
+          <div class="form-group">
+            <label>Company / Organisation</label>
+            <input type="text" id="q-company" placeholder="Company name">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email Address *</label>
+            <input type="email" id="q-email" placeholder="you@company.com">
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" id="q-phone" placeholder="+91 00000 00000">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Location / Country</label>
+          <input type="text" id="q-location" placeholder="City, Country">
+        </div>
+        <div class="form-actions">
+          <div></div>
+          <button class="btn-next" onclick="qGoStep(2)">Next — Service Needed →</button>
+        </div>
+      </div>
+
+      <!-- STEP 2: Services -->
+      <div class="form-step" id="qstep2">
+        <div class="form-group"><label>Select Services Required *</label></div>
+        <div class="service-grid">
+          <label class="service-check" onclick="qToggleCheck(this)">
+            <div class="q-cb">✓</div><span>Automation Solutions</span>
+          </label>
+          <label class="service-check" onclick="qToggleCheck(this)">
+            <div class="q-cb">✓</div><span>Industrial Automation (SCADA/PLC)</span>
+          </label>
+          <label class="service-check" onclick="qToggleCheck(this)">
+            <div class="q-cb">✓</div><span>Software &amp; SaaS Development</span>
+          </label>
+          <label class="service-check" onclick="qToggleCheck(this)">
+            <div class="q-cb">✓</div><span>Hardware &amp; Embedded Systems</span>
+          </label>
+          <label class="service-check" onclick="qToggleCheck(this)">
+            <div class="q-cb">✓</div><span>RPA &amp; Process Automation</span>
+          </label>
+          <label class="service-check" onclick="qToggleCheck(this)">
+            <div class="q-cb">✓</div><span>AI, ML &amp; Data Science</span>
+          </label>
+          <label class="service-check" onclick="qToggleCheck(this)">
+            <div class="q-cb">✓</div><span>Generative &amp; Agentic AI</span>
+          </label>
+          <label class="service-check" onclick="qToggleCheck(this)">
+            <div class="q-cb">✓</div><span>Robotics</span>
+          </label>
+          <label class="service-check" onclick="qToggleCheck(this)">
+            <div class="q-cb">✓</div><span>Consulting &amp; Turnkey Projects</span>
+          </label>
+          <label class="service-check" onclick="qToggleCheck(this)">
+            <div class="q-cb">✓</div><span>Manpower &amp; Recruitment</span>
+          </label>
+        </div>
+        <div class="form-group">
+          <label>Brief Project Description</label>
+          <textarea id="q-desc" placeholder="Briefly describe your project, goals or problem you want to solve…"></textarea>
+        </div>
+        <div class="form-actions">
+          <button class="btn-back" onclick="qGoStep(1)">← Back</button>
+          <button class="btn-next" onclick="qGoStep(3)">Next — Budget &amp; Timeline →</button>
+        </div>
+      </div>
+
+      <!-- STEP 3: Budget & Timeline -->
+      <div class="form-step" id="qstep3">
+        <div class="form-group">
+          <label>Estimated Budget (INR)</label>
+          <div class="chip-group" id="budgetChips">
+            <div class="chip-opt" onclick="qSelectChip(this,'budgetChips')">Under ₹5L</div>
+            <div class="chip-opt" onclick="qSelectChip(this,'budgetChips')">₹5L – ₹25L</div>
+            <div class="chip-opt" onclick="qSelectChip(this,'budgetChips')">₹25L – ₹1Cr</div>
+            <div class="chip-opt" onclick="qSelectChip(this,'budgetChips')">₹1Cr+</div>
+            <div class="chip-opt" onclick="qSelectChip(this,'budgetChips')">Not decided yet</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Preferred Timeline</label>
+          <div class="chip-group" id="timelineChips">
+            <div class="chip-opt" onclick="qSelectChip(this,'timelineChips')">ASAP</div>
+            <div class="chip-opt" onclick="qSelectChip(this,'timelineChips')">1–3 months</div>
+            <div class="chip-opt" onclick="qSelectChip(this,'timelineChips')">3–6 months</div>
+            <div class="chip-opt" onclick="qSelectChip(this,'timelineChips')">6–12 months</div>
+            <div class="chip-opt" onclick="qSelectChip(this,'timelineChips')">Flexible</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>How Did You Hear About Us?</label>
+          <select id="q-source">
+            <option value="">Select an option</option>
+            <option>Google Search</option>
+            <option>LinkedIn</option>
+            <option>Referral / Word of Mouth</option>
+            <option>Social Media</option>
+            <option>Industry Event / Expo</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Any Additional Notes</label>
+          <textarea id="q-notes" placeholder="Any specific requirements, preferences or questions…" style="min-height:70px"></textarea>
+        </div>
+        <div class="form-actions">
+          <button class="btn-back" onclick="qGoStep(2)">← Back</button>
+          <button class="btn-next" onclick="qSubmit()">✦ Submit Request</button>
+        </div>
+      </div>
+
+      <!-- SUCCESS -->
+      <div class="q-success" id="qSuccess">
+        <div class="q-success-icon">✓</div>
+        <h3>Quote Request Sent!</h3>
+        <p>Our team will review your requirements and reach out within <strong>24 hours</strong> with a tailored proposal.</p>
+        <div class="q-success-details" id="qSuccessDetails"></div>
+        <button class="btn-next" onclick="qClose()">Close</button>
+      </div>
+
+    </div><!-- /modal-body -->
+  </div><!-- /modal-box -->
+</div><!-- /modal-overlay -->

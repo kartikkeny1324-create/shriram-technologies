@@ -49,17 +49,21 @@
         </div>
     </div>
     <div class="hero-visual">
-        <div class="hero-globe">
-            <div class="globe-ring r1"></div>
-            <div class="globe-ring r2"></div>
-            <div class="globe-ring r3"></div>
-            <div class="globe-core">
-                <img src="{{ url_for('static', filename='images/logo-dark.jpg') }}" alt="Shriram Technologies" class="globe-logo">
-            </div>
-            <div class="orbit-dot od1"></div>
-            <div class="orbit-dot od2"></div>
-            <div class="orbit-dot od3"></div>
+    <div class="hero-globe">
+        <div class="globe-ring r1"></div>
+        <div class="globe-ring r2"></div>
+        <div class="globe-ring r3"></div>
+        <div class="globe-core">
+            <div class="globe-platform"></div>
+            <img src="{{ url_for('static', filename='images/robot.png') }}"
+                 alt="Automation Robot"
+                 class="globe-robot">
         </div>
+        <div class="orbit-dot od1"></div>
+        <div class="orbit-dot od2"></div>
+        <div class="orbit-dot od3"></div>
+    </div>
+</div>
     </div>
 </section>
 
@@ -233,26 +237,116 @@
 </section>
 
 <!-- ===== INDUSTRIES ===== -->
-<section class="section industries-section">
-    <div class="container">
-        <div class="section-header">
-            <span class="section-tag">Industries</span>
-            <h2>Sectors We <span class="gradient-text">Serve</span></h2>
-            <p>Our solutions span every major industry vertical.</p>
+<section class="sectors-section">
+  <div class="container">
+    <div class="section-badge">INDUSTRIES</div>
+    <h2 class="section-title sectors-title">Sectors We <span class="highlight">Serve</span></h2>
+    <p class="section-sub sectors-sub">Our solutions span every major industry vertical.</p>
+
+    <div class="sectors-grid-i">
+
+      <div class="card-i reveal">
+        <div class="i-bg">⚙️</div>
+        <div class="i-overlay"></div>
+        <div class="i-content">
+          <span class="i-icon">⚙️</span>
+          <span class="i-name">Manufacturing</span>
+          <p class="i-desc">Smart factory & process automation</p>
         </div>
-        <div class="industries-grid">
-            <div class="industry-card reveal"><div class="ind-bar" style="--ic:linear-gradient(135deg,#00d4ff,#2979ff)"></div><span>Manufacturing</span></div>
-            <div class="industry-card reveal"><div class="ind-bar" style="--ic:linear-gradient(135deg,#e040fb,#7c4dff)"></div><span>Healthcare</span></div>
-            <div class="industry-card reveal"><div class="ind-bar" style="--ic:linear-gradient(135deg,#00e676,#00b0ff)"></div><span>Agriculture</span></div>
-            <div class="industry-card reveal"><div class="ind-bar" style="--ic:linear-gradient(135deg,#ffd740,#ff6d00)"></div><span>Banking &amp; Finance</span></div>
-            <div class="industry-card reveal"><div class="ind-bar" style="--ic:linear-gradient(135deg,#00b0ff,#00e5ff)"></div><span>Logistics</span></div>
-            <div class="industry-card reveal"><div class="ind-bar" style="--ic:linear-gradient(135deg,#ff6d00,#ffab40)"></div><span>Energy</span></div>
-            <div class="industry-card reveal"><div class="ind-bar" style="--ic:linear-gradient(135deg,#2979ff,#00d4ff)"></div><span>Infrastructure</span></div>
-            <div class="industry-card reveal"><div class="ind-bar" style="--ic:linear-gradient(135deg,#ec407a,#ff6d00)"></div><span>Retail</span></div>
-            <div class="industry-card reveal"><div class="ind-bar" style="--ic:linear-gradient(135deg,#7c4dff,#e040fb)"></div><span>Commercial</span></div>
-            <div class="industry-card reveal"><div class="ind-bar" style="--ic:linear-gradient(135deg,#00e5ff,#00d4ff)"></div><span>Cloud &amp; SaaS</span></div>
+      </div>
+
+      <div class="card-i reveal">
+        <div class="i-bg">🏥</div>
+        <div class="i-overlay"></div>
+        <div class="i-content">
+          <span class="i-icon">🏥</span>
+          <span class="i-name">Healthcare</span>
+          <p class="i-desc">Medical robotics & data systems</p>
         </div>
+      </div>
+
+      <div class="card-i reveal">
+        <div class="i-bg">🌾</div>
+        <div class="i-overlay"></div>
+        <div class="i-content">
+          <span class="i-icon">🌾</span>
+          <span class="i-name">Agriculture</span>
+          <p class="i-desc">Precision farming & IoT monitoring</p>
+        </div>
+      </div>
+
+      <div class="card-i reveal">
+        <div class="i-bg">🏦</div>
+        <div class="i-overlay"></div>
+        <div class="i-content">
+          <span class="i-icon">🏦</span>
+          <span class="i-name">Banking & Finance</span>
+          <p class="i-desc">AI-driven risk analytics</p>
+        </div>
+      </div>
+
+      <div class="card-i reveal">
+        <div class="i-bg">🚚</div>
+        <div class="i-overlay"></div>
+        <div class="i-content">
+          <span class="i-icon">🚚</span>
+          <span class="i-name">Logistics</span>
+          <p class="i-desc">Fleet & warehouse automation</p>
+        </div>
+      </div>
+
+      <div class="card-i reveal">
+        <div class="i-bg">⚡</div>
+        <div class="i-overlay"></div>
+        <div class="i-content">
+          <span class="i-icon">⚡</span>
+          <span class="i-name">Energy</span>
+          <p class="i-desc">Smart grid & renewable tech</p>
+        </div>
+      </div>
+
+      <div class="card-i reveal">
+        <div class="i-bg">🏗️</div>
+        <div class="i-overlay"></div>
+        <div class="i-content">
+          <span class="i-icon">🏗️</span>
+          <span class="i-name">Infrastructure</span>
+          <p class="i-desc">Smart buildings & facility tech</p>
+        </div>
+      </div>
+
+      <div class="card-i reveal">
+        <div class="i-bg">🛒</div>
+        <div class="i-overlay"></div>
+        <div class="i-content">
+          <span class="i-icon">🛒</span>
+          <span class="i-name">Retail</span>
+          <p class="i-desc">Inventory & customer AI</p>
+        </div>
+      </div>
+
+      <div class="card-i reveal">
+        <div class="i-bg">🏢</div>
+        <div class="i-overlay"></div>
+        <div class="i-content">
+          <span class="i-icon">🏢</span>
+          <span class="i-name">Commercial</span>
+          <p class="i-desc">Digital transformation</p>
+        </div>
+      </div>
+
+      <div class="card-i reveal">
+        <div class="i-bg">☁️</div>
+        <div class="i-overlay"></div>
+        <div class="i-content">
+          <span class="i-icon">☁️</span>
+          <span class="i-name">Cloud & SaaS</span>
+          <p class="i-desc">Scalable cloud & APIs</p>
+        </div>
+      </div>
+
     </div>
+  </div>
 </section>
 
 <!-- ===== PROCESS ===== -->

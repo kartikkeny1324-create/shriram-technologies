@@ -7,6 +7,59 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+    /* ── Quote Modal ─────────────────────────────────────────── */
+    .qm-overlay{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(4,10,30,.72);backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity .3s ease}
+    .qm-overlay.open{opacity:1;pointer-events:all}
+    .qm-box{background:linear-gradient(160deg,#0c1e54 0%,#060d26 100%);border:1px solid rgba(0,212,255,.2);border-radius:18px;width:min(560px,95vw);max-height:90vh;overflow-y:auto;padding:40px 44px 36px;position:relative;transform:translateY(28px) scale(.97);transition:transform .35s cubic-bezier(.22,1,.36,1)}
+    .qm-overlay.open .qm-box{transform:translateY(0) scale(1)}
+    .qm-close{position:absolute;top:16px;right:18px;background:none;border:none;color:rgba(255,255,255,.45);font-size:22px;cursor:pointer;line-height:1;padding:4px 8px;border-radius:6px;transition:color .2s}
+    .qm-close:hover{color:#fff}
+    .qm-title{font-family:'Rajdhani',sans-serif;font-size:1.7rem;font-weight:700;color:#fff;margin:0 0 4px}
+    .qm-sub{color:rgba(255,255,255,.5);font-size:.88rem;margin:0 0 28px}
+    /* steps bar */
+    .qm-steps{display:flex;align-items:center;gap:0;margin-bottom:32px}
+    .qm-step{display:flex;align-items:center;gap:8px;font-size:.78rem;font-weight:600;color:rgba(255,255,255,.35);flex:1}
+    .qm-step span{width:26px;height:26px;border-radius:50%;border:2px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:.75rem;flex-shrink:0}
+    .qm-step.active{color:#00d4ff}
+    .qm-step.active span{border-color:#00d4ff;background:rgba(0,212,255,.12);color:#00d4ff}
+    .qm-step.done span{background:#00d4ff;border-color:#00d4ff;color:#060d26}
+    .qm-step-line{flex:1;height:1px;background:rgba(255,255,255,.12);margin:0 8px;max-width:40px}
+    /* fields */
+    .qm-panel{display:none}.qm-panel.active{display:block}
+    .qm-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+    .qm-row.full{grid-template-columns:1fr}
+    .qm-field{display:flex;flex-direction:column;gap:6px}
+    .qm-field label{font-size:.78rem;font-weight:600;color:rgba(255,255,255,.55);letter-spacing:.04em;text-transform:uppercase}
+    .qm-field input,.qm-field textarea,.qm-field select{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:9px;padding:11px 14px;color:#fff;font-size:.9rem;font-family:inherit;outline:none;transition:border-color .2s,box-shadow .2s;resize:none}
+    .qm-field input:focus,.qm-field textarea:focus,.qm-field select:focus{border-color:rgba(0,212,255,.5);box-shadow:0 0 0 3px rgba(0,212,255,.08)}
+    .qm-field input::placeholder,.qm-field textarea::placeholder{color:rgba(255,255,255,.25)}
+    .qm-field select option{background:#0c1e54;color:#fff}
+    /* service checkboxes */
+    .qm-services{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+    .qm-svc{display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:9px;padding:9px 12px;cursor:pointer;transition:border-color .2s,background .2s;font-size:.85rem;color:rgba(255,255,255,.75)}
+    .qm-svc input{accent-color:#00d4ff;width:15px;height:15px;cursor:pointer}
+    .qm-svc:has(input:checked){border-color:rgba(0,212,255,.4);background:rgba(0,212,255,.07);color:#fff}
+    /* chips */
+    .qm-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+    .qm-chip{padding:7px 16px;border-radius:20px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.04);color:rgba(255,255,255,.65);font-size:.82rem;cursor:pointer;transition:all .2s;user-select:none}
+    .qm-chip.selected{border-color:#00d4ff;background:rgba(0,212,255,.12);color:#00d4ff}
+    .qm-chip-label{font-size:.78rem;font-weight:600;color:rgba(255,255,255,.45);letter-spacing:.04em;text-transform:uppercase;margin-bottom:8px}
+    /* buttons */
+    .qm-actions{display:flex;justify-content:space-between;align-items:center;margin-top:28px;gap:12px}
+    .qm-btn-back{background:none;border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.6);padding:11px 24px;border-radius:9px;font-size:.88rem;cursor:pointer;transition:all .2s}
+    .qm-btn-back:hover{border-color:rgba(255,255,255,.4);color:#fff}
+    .qm-btn-next{background:linear-gradient(135deg,#00d4ff,#2979ff);border:none;color:#fff;padding:12px 32px;border-radius:9px;font-size:.9rem;font-weight:600;cursor:pointer;transition:opacity .2s,transform .2s;margin-left:auto}
+    .qm-btn-next:hover{opacity:.88;transform:translateY(-1px)}
+    .qm-err{color:#ff6b6b;font-size:.8rem;margin-top:6px;display:none}
+    /* success */
+    .qm-success{text-align:center;padding:20px 0 10px}
+    .qm-success-icon{font-size:3rem;margin-bottom:16px}
+    .qm-success h3{font-family:'Rajdhani',sans-serif;font-size:1.6rem;color:#fff;margin:0 0 8px}
+    .qm-success p{color:rgba(255,255,255,.55);font-size:.9rem;line-height:1.6}
+    @media(max-width:520px){.qm-box{padding:28px 20px 24px}.qm-row{grid-template-columns:1fr}.qm-services{grid-template-columns:1fr}}
+    </style>
 </head>
 <body>
 
@@ -25,7 +78,7 @@
             <li><a href="{{ url_for('about') }}" class="nav-link {% if request.endpoint == 'about' %}active{% endif %}">About</a></li>
             <li><a href="{{ url_for('services') }}" class="nav-link {% if request.endpoint == 'services' %}active{% endif %}">Services</a></li>
             <li><a href="{{ url_for('contact') }}" class="nav-link {% if request.endpoint == 'contact' %}active{% endif %}">Contact</a></li>
-            <li><a href="{{ url_for('contact') }}" class="btn-nav"><span>Get a Quote</span></a></li>
+            <li><button class="btn-nav" data-quote-trigger><span>✦ Get a Quote</span></button></li>
         </ul>
         <button class="hamburger" id="hamburger" aria-label="Toggle menu">
             <span></span><span></span><span></span>
@@ -72,9 +125,7 @@
                     <ul>
                         <li><a href="{{ url_for('about') }}">About Us</a></li>
                         <li><a href="{{ url_for('services') }}">Our Services</a></li>
-                        <li><a href="{{ url_for('contact') }}">Careers</a></li>
                         <li><a href="{{ url_for('contact') }}">Contact</a></li>
-                        <li><a href="{{ url_for('contact') }}">Partnerships</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -95,6 +146,244 @@
     </div>
 </footer>
 
+<!-- ══ QUOTE MODAL ══════════════════════════════════════════════ -->
+<div id="quoteModal" class="qm-overlay" role="dialog" aria-modal="true" aria-label="Get a Quote">
+  <div class="qm-box">
+    <button class="qm-close" id="qmClose" aria-label="Close">✕</button>
+
+    <!-- Header -->
+    <p class="qm-title">Get a Quote</p>
+    <p class="qm-sub">Tell us about your project — we'll respond within 24 hours.</p>
+
+    <!-- Steps bar -->
+    <div class="qm-steps">
+      <div class="qm-step active" id="qmStepA">
+        <span>1</span> Your Info
+      </div>
+      <div class="qm-step-line"></div>
+      <div class="qm-step" id="qmStepB">
+        <span>2</span> Project
+      </div>
+      <div class="qm-step-line"></div>
+      <div class="qm-step" id="qmStepC">
+        <span>3</span> Details
+      </div>
+    </div>
+
+    <!-- Step 1 -->
+    <div class="qm-panel active" id="qmPanel1">
+      <div class="qm-row">
+        <div class="qm-field">
+          <label>Full Name *</label>
+          <input type="text" id="qmName" placeholder="Ravi Sharma">
+        </div>
+        <div class="qm-field">
+          <label>Email *</label>
+          <input type="email" id="qmEmail" placeholder="ravi@company.com">
+        </div>
+      </div>
+      <div class="qm-row">
+        <div class="qm-field">
+          <label>Company</label>
+          <input type="text" id="qmCompany" placeholder="Your Company">
+        </div>
+        <div class="qm-field">
+          <label>Phone</label>
+          <input type="tel" id="qmPhone" placeholder="+91 98765 43210">
+        </div>
+      </div>
+      <div class="qm-row full">
+        <div class="qm-field">
+          <label>Location</label>
+          <input type="text" id="qmLocation" placeholder="City, Country">
+        </div>
+      </div>
+      <p class="qm-err" id="qmErr1">Please enter your name and a valid email.</p>
+      <div class="qm-actions">
+        <button class="qm-btn-next" id="qmNext1">Next →</button>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="qm-panel" id="qmPanel2">
+      <p class="qm-chip-label">Services Needed</p>
+      <div class="qm-services">
+        <label class="qm-svc"><input type="checkbox" value="Automation Solutions"> Automation Solutions</label>
+        <label class="qm-svc"><input type="checkbox" value="Industrial Automation"> Industrial Automation</label>
+        <label class="qm-svc"><input type="checkbox" value="Software Development"> Software Development</label>
+        <label class="qm-svc"><input type="checkbox" value="AI & Machine Learning"> AI & Machine Learning</label>
+        <label class="qm-svc"><input type="checkbox" value="Generative AI"> Generative & Agentic AI</label>
+        <label class="qm-svc"><input type="checkbox" value="Robotics"> Robotics</label>
+        <label class="qm-svc"><input type="checkbox" value="IoT Solutions"> IoT Solutions</label>
+        <label class="qm-svc"><input type="checkbox" value="Other"> Other</label>
+      </div>
+      <div class="qm-row full">
+        <div class="qm-field">
+          <label>Project Description</label>
+          <textarea id="qmDesc" rows="4" placeholder="Briefly describe what you need..."></textarea>
+        </div>
+      </div>
+      <div class="qm-actions">
+        <button class="qm-btn-back" id="qmBack2">← Back</button>
+        <button class="qm-btn-next" id="qmNext2">Next →</button>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="qm-panel" id="qmPanel3">
+      <p class="qm-chip-label">Budget Range</p>
+      <div class="qm-chips" id="qmBudget">
+        <div class="qm-chip" data-group="budget">Under ₹1L</div>
+        <div class="qm-chip" data-group="budget">₹1L – ₹5L</div>
+        <div class="qm-chip" data-group="budget">₹5L – ₹20L</div>
+        <div class="qm-chip" data-group="budget">₹20L+</div>
+        <div class="qm-chip" data-group="budget">Let's discuss</div>
+      </div>
+      <p class="qm-chip-label">Timeline</p>
+      <div class="qm-chips" id="qmTimeline">
+        <div class="qm-chip" data-group="timeline">ASAP</div>
+        <div class="qm-chip" data-group="timeline">1–3 months</div>
+        <div class="qm-chip" data-group="timeline">3–6 months</div>
+        <div class="qm-chip" data-group="timeline">6+ months</div>
+        <div class="qm-chip" data-group="timeline">Flexible</div>
+      </div>
+      <div class="qm-row full">
+        <div class="qm-field">
+          <label>How did you hear about us?</label>
+          <select id="qmSource">
+            <option value="">Select...</option>
+            <option>Google Search</option>
+            <option>LinkedIn</option>
+            <option>Referral</option>
+            <option>Social Media</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="qm-row full">
+        <div class="qm-field">
+          <label>Additional Notes</label>
+          <textarea id="qmNotes" rows="3" placeholder="Anything else we should know?"></textarea>
+        </div>
+      </div>
+      <div class="qm-actions">
+        <button class="qm-btn-back" id="qmBack3">← Back</button>
+        <button class="qm-btn-next" id="qmSubmit">Submit ✦</button>
+      </div>
+    </div>
+
+    <!-- Success -->
+    <div class="qm-panel" id="qmSuccess">
+      <div class="qm-success">
+        <div class="qm-success-icon">🎉</div>
+        <h3>Quote Request Sent!</h3>
+        <p>Thank you! We've received your request and will get back to you within <strong>24 hours</strong>.</p>
+        <br>
+        <button class="qm-btn-next" id="qmDone" style="margin:0 auto;display:block">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- ══ END QUOTE MODAL ══════════════════════════════════════════ -->
+
 <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+<script>
+// ── Quote Modal Logic ────────────────────────────────────────────
+(function(){
+  const overlay = document.getElementById('quoteModal');
+  const steps   = [document.getElementById('qmStepA'), document.getElementById('qmStepB'), document.getElementById('qmStepC')];
+  const panels  = [document.getElementById('qmPanel1'), document.getElementById('qmPanel2'), document.getElementById('qmPanel3'), document.getElementById('qmSuccess')];
+  let currentStep = 0;
+
+  function openModal(){
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    goTo(0);
+  }
+  function closeModal(){
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function goTo(n){
+    panels.forEach((p,i) => p.classList.toggle('active', i === n));
+    steps.forEach((s,i) => {
+      s.classList.remove('active','done');
+      if(i < n) s.classList.add('done');
+      if(i === n) s.classList.add('active');
+    });
+    currentStep = n;
+  }
+
+  // Open triggers
+  document.querySelectorAll('[data-quote-trigger]').forEach(btn => btn.addEventListener('click', openModal));
+
+  // Close
+  document.getElementById('qmClose').addEventListener('click', closeModal);
+  document.getElementById('qmDone').addEventListener('click', closeModal);
+  overlay.addEventListener('click', e => { if(e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
+
+  // Step 1 → 2
+  document.getElementById('qmNext1').addEventListener('click', () => {
+    const name  = document.getElementById('qmName').value.trim();
+    const email = document.getElementById('qmEmail').value.trim();
+    const err   = document.getElementById('qmErr1');
+    if(!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+      err.style.display = 'block'; return;
+    }
+    err.style.display = 'none';
+    goTo(1);
+  });
+
+  // Step 2 → 3
+  document.getElementById('qmNext2').addEventListener('click', () => goTo(2));
+
+  // Back buttons
+  document.getElementById('qmBack2').addEventListener('click', () => goTo(0));
+  document.getElementById('qmBack3').addEventListener('click', () => goTo(1));
+
+  // Chips (single-select per group)
+  document.querySelectorAll('.qm-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const group = chip.dataset.group;
+      document.querySelectorAll(`.qm-chip[data-group="${group}"]`).forEach(c => c.classList.remove('selected'));
+      chip.classList.toggle('selected');
+    });
+  });
+
+  // Submit
+  document.getElementById('qmSubmit').addEventListener('click', () => {
+    const services = [...document.querySelectorAll('.qm-svc input:checked')].map(i => i.value);
+    const budget   = document.querySelector('.qm-chip[data-group="budget"].selected')?.textContent || '';
+    const timeline = document.querySelector('.qm-chip[data-group="timeline"].selected')?.textContent || '';
+    const payload  = {
+      name:     document.getElementById('qmName').value.trim(),
+      email:    document.getElementById('qmEmail').value.trim(),
+      company:  document.getElementById('qmCompany').value.trim(),
+      phone:    document.getElementById('qmPhone').value.trim(),
+      location: document.getElementById('qmLocation').value.trim(),
+      services,
+      description: document.getElementById('qmDesc').value.trim(),
+      budget,
+      timeline,
+      source:   document.getElementById('qmSource').value,
+      notes:    document.getElementById('qmNotes').value.trim(),
+    };
+
+    // ── Uncomment below to send to Flask once route is ready ──
+    // fetch('/quote', {
+    //   method: 'POST',
+    //   headers: {'Content-Type': 'application/json'},
+    //   body: JSON.stringify(payload)
+    // });
+
+    console.log('Quote submitted:', payload);
+    goTo(3); // show success screen
+  });
+})();
+</script>
+
 </body>
 </html>
